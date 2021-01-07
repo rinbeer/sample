@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <form action="/submit" method="POST" enctype="multipart/form-data" class="big-form">
+    <div><label>・音声データ：</label><input type="file" name="upload" accept=".wav"></div>
+    <div>
+    <label>・音声の長さ：</label>
+    <select name="length" value="音声の長さ" >
+      <option value="10">10分</option>
+      <option value="20">20分</option>
+      <option value="30">30分</option>
+      <option value="40">40分</option>
+      <option value="50">50分</option>
+      <option value="60">60分</option>
+      <option value="70">70分</option>
+      <option value="80">80分</option>
+      <option value="90">90分</option>
+      <option value="100">100分</option>
+      <option value="110">110分</option>
+      <option value="120">120分</option>
+    </select>
+    </div>
+    <!-- 提出ボタン -->
+    <input type="submit" class="Form-Btn" value="書き出し（かきだし）" name="trans">
+  </form>
+
+
+<!-- Javascriptでの音声録音 -->
+  <div id="records">
+    <div id="controls">
+      <button id="recordButton">Record</button>
+      <button id="pauseButton" disabled>Pause</button>
+      <button id="stopButton" disabled>Stop</button>
+    </div>
+    <div id="formats">Format: start recording to see sample rate</div>
+    <p><strong>Recordings:</strong></p>
+    <ol id="recordingsList"></ol>
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="static/js/recorder.js"></script>
+    <script src="static/js/audio.js"></script>
+  </div>
+<!-- 録音ツール終了 -->
+</div>
+{% endblock %}
